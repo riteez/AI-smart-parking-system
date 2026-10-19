@@ -21,7 +21,7 @@ function Dashboard({ onVehicleRegistered }) {
     const newBarcode = "SP" + Date.now();
 
     try {
-      await axios.post("http://127.0.0.1:5000/register-vehicle", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/register-vehicle`, {
         ownerName,
         vehicleNumber,
         phone,

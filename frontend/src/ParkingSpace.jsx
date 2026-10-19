@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaParking } from "react-icons/fa";
 import PresentVehicles from "./PresentVehicles.jsx";
@@ -8,7 +8,7 @@ function ParkingSpace() {
 
   const loadStatus = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:5000/parking-status");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/parking-status`);
       setStatus(res.data);
     } catch (err) {
       console.log(err);

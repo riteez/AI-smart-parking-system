@@ -1,11 +1,13 @@
-﻿from flask import Flask, request, jsonify
+﻿import os
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import get_connection
 from datetime import datetime
 
 app = Flask(__name__)
-CORS(app)
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:5173,http://127.0.0.1:5173")
+CORS(app, origins=[u.strip().rstrip("/") for u in FRONTEND_URL.split(",")])
 
 TOTAL_SLOTS = 50
 

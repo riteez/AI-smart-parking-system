@@ -1,7 +1,9 @@
+import os
 import cv2
 from pyzbar.pyzbar import decode
 import requests
 
+BACKEND_URL = os.getenv("BACKEND_URL", "http://127.0.0.1:5000")
 # Open camera
 camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
@@ -26,7 +28,7 @@ while True:
         print("Barcode:", code)
 
         try:
-            response = requests.get(f"http://127.0.0.1:5000/scan/{code}")
+            response = requests.get(f"{BACKEND_URL}/scan/{code}")
             print(response.json())
         except Exception as e:
             print("Server Error:", e)

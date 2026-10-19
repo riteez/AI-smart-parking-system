@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+import { useEffect } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useToast } from "./Toast.jsx";
 
@@ -14,7 +14,7 @@ function Scanner() {
 
     scanner.render(
       (decodedText) => {
-        fetch(`http://127.0.0.1:5000/scan/${decodedText}`)
+        fetch(`${import.meta.env.VITE_API_URL}/scan/${decodedText}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.status === "Authorized") {

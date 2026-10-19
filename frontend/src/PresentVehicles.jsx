@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaCar } from "react-icons/fa";
 
@@ -7,7 +7,7 @@ function PresentVehicles() {
 
   const loadPresent = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:5000/present-vehicles");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/present-vehicles`);
       setVehicles(res.data);
     } catch (err) {
       console.log(err);
